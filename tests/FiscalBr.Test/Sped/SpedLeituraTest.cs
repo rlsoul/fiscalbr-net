@@ -7,6 +7,25 @@ namespace FiscalBr.Test.Sped
     public class SpedLeituraTest
     {
         [Fact]
+        public void LeituraArquivoEFDContribuicoes()
+        {
+            var efdContribFile = new FiscalBr.EFDContribuicoes.ArquivoEFDContribuicoes();
+
+            efdContribFile.Ler("E:\\Tecnologia\\Arquivos\\SPED_CONTRIBUICOES_000097_032024.txt");
+
+            Assert.Equal("Hebrom Musical Comercio de Instrumentos Eireli", efdContribFile.Bloco0.Reg0000.Nome);
+        }
+        
+        [Fact]
+        public void LeituraArquivoEFDFiscal()
+        {
+            var efdFiscal = new FiscalBr.EFDFiscal.ArquivoEFDFiscalV2();
+            efdFiscal.LerArquivo("E:\\Tecnologia\\Arquivos\\sped_fiscal_550.txt");
+
+            Assert.Equal("SUPERMERCADO M.M. LTDA", efdFiscal.Bloco0.Reg0000.Nome);
+        }
+
+        [Fact]
         public void LeituraArquivoEFDContribuicoesSimplesApropriacaoDireta()
         {
             /*
